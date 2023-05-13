@@ -34,6 +34,7 @@ class _WeatherHomeScreen extends State<WeatherHomeScreen> {
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
+
         // color: Colors.indigoAccent,
         child: Center(
           child: BlocConsumer<WeatherCubit, WeatherState>(
@@ -81,9 +82,18 @@ class _WeatherHomeScreen extends State<WeatherHomeScreen> {
                         style: const TextStyle(
                             fontSize: 25, fontWeight: FontWeight.bold),
                       ),
-                      Text("temp ${weatherCardModel.main?.temp }"),
-                      Text("Pressure temp ${weatherCardModel.main?.pressure}"),
-                      Text("Humidity temp ${weatherCardModel.main?.humidity}"),
+                      Text("Temp ${weatherCardModel.main?.temp }°C",
+                        style: const TextStyle(color: Colors.red, fontSize: 20.0),
+                      ),
+                      Text("Pressure  ${weatherCardModel.main?.pressure}",
+                        style: const TextStyle(color: Colors.red, fontSize: 20.0),
+                      ),
+                      Text("Humidity  ${weatherCardModel.main?.humidity}",
+                        style: const TextStyle(color: Colors.red, fontSize: 20.0),
+                      ),
+
+
+
 
                     ],
                   );
