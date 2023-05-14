@@ -82,19 +82,21 @@ class _WeatherHomeScreen extends State<WeatherHomeScreen> {
                         style: const TextStyle(
                             fontSize: 25, fontWeight: FontWeight.bold),
                       ),
-                      Text("Temp ${weatherCardModel.main?.temp }°C",
-                        style: const TextStyle(color: Colors.red, fontSize: 20.0),
+                      Text(
+                        "Temp ${weatherCardModel.main?.temp}°C",
+                        style:
+                            const TextStyle(color: Colors.red, fontSize: 20.0),
                       ),
-                      Text("Pressure  ${weatherCardModel.main?.pressure}",
-                        style: const TextStyle(color: Colors.red, fontSize: 20.0),
+                      Text(
+                        "Pressure  ${weatherCardModel.main?.pressure}",
+                        style:
+                            const TextStyle(color: Colors.red, fontSize: 20.0),
                       ),
-                      Text("Humidity  ${weatherCardModel.main?.humidity}",
-                        style: const TextStyle(color: Colors.red, fontSize: 20.0),
+                      Text(
+                        "Humidity  ${weatherCardModel.main?.humidity}",
+                        style:
+                            const TextStyle(color: Colors.red, fontSize: 20.0),
                       ),
-
-
-
-
                     ],
                   );
                 },
