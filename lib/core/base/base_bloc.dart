@@ -7,9 +7,7 @@ mixin BaseBlocMixin {
     required Function(String? error) onFailure,
   }) {
     try {
-      return response.fold((error) => left(onFailure(error)), (data) {
-        return right(onData(data));
-      });
+      return response.fold((error) => onFailure(error), (data) => onData(data));
     } on String catch (e) {
       return left(onFailure(e));
     }
