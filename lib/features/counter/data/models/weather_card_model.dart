@@ -1,8 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 part 'weather_card_model.freezed.dart';
 part 'weather_card_model.g.dart';
-
 @freezed
 class WeatherCardModel with _$WeatherCardModel {
   const factory WeatherCardModel({
