@@ -19,6 +19,10 @@ Future<Either<String?, WeatherCardModel>> getWeather(String city)async{
 
   }
 
+  Future<Either<String?, WeatherCardModel>> getWeatherFromLatLong({required double lat, required double long}) {
+  return handleNetworkCall(apiCall: _weatherDataSource.getWeatherFromLatLong(lat:lat,long:long), onSuccess: (data)=>data);
+  }
+
 
 }
 

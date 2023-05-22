@@ -47,6 +47,8 @@ dependencies:
   floating_snackbar: ^1.0.3+1
   bloc: ^8.1.1
   flutter_bloc: ^8.1.2
+  intl: ^0.18.1
+  geolocator: ^9.0.2
 
 
 dev_dependencies:

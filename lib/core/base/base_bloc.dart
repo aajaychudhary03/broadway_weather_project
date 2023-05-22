@@ -9,7 +9,7 @@ mixin BaseBlocMixin {
     try {
       return response.fold((error) => onFailure(error), (data) => onData(data));
     } on String catch (e) {
-      return left(onFailure(e));
+      return onFailure(e);
     }
   }
 }

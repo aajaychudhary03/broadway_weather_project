@@ -13,8 +13,10 @@ import 'package:broadway_weather_project/features/counter/data/data_source/weath
     as _i3;
 import 'package:broadway_weather_project/features/counter/data/repository/weather_repository.dart'
     as _i4;
-import 'package:broadway_weather_project/features/counter/presentation/bloc/weather_cubit.dart'
+import 'package:broadway_weather_project/features/counter/presentation/bloc/location/location_cubit.dart'
     as _i5;
+import 'package:broadway_weather_project/features/counter/presentation/bloc/weather_cubit.dart'
+    as _i6;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
@@ -34,7 +36,9 @@ _i1.GetIt $initGetIt(
   gh.lazySingleton<_i3.WeatherDataSource>(() => _i3.WeatherDataSource());
   gh.lazySingleton<_i4.WeatherRepository>(
       () => _i4.WeatherRepository(gh<_i3.WeatherDataSource>()));
-  gh.factory<_i5.WeatherCubit>(
-      () => _i5.WeatherCubit(gh<_i4.WeatherRepository>()));
+  gh.factory<_i5.LocationCubit>(
+      () => _i5.LocationCubit(gh<_i4.WeatherRepository>()));
+  gh.factory<_i6.WeatherCubit>(
+      () => _i6.WeatherCubit(gh<_i4.WeatherRepository>()));
   return getIt;
 }

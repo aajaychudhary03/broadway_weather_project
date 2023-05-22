@@ -1,5 +1,6 @@
 import 'package:broadway_weather_project/core/base/base_data_source.dart';
 import 'package:broadway_weather_project/core/di/injetctable.dart';
+import 'package:broadway_weather_project/core/utils/constants.dart';
 import 'package:broadway_weather_project/features/counter/data/models/weather_card_model.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -19,5 +20,16 @@ class WeatherDataSource extends BaseRemoteSource {
         onResponse: (Map<String, dynamic> data) {
           return WeatherCardModel.fromJson(data);
         });
+  }
+
+  Future<WeatherCardModel> getWeatherFromLatLong(
+      {required double lat, required double long}) {
+    return networkHandler(
+        request: (Dio dio) => dio.get(
+            'https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$long&appid=${WeatherConstants.key}'),
+        onResponse: (data) =>
+          WeatherCardModel.fromJson(data)
+
+        );
   }
 }
