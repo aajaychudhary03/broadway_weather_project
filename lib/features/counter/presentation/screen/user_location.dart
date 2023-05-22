@@ -1,6 +1,7 @@
 import 'package:broadway_weather_project/features/counter/presentation/bloc/location/location_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:line_icons/line_icons.dart';
 
 class UserLocation extends StatefulWidget {
   const UserLocation({Key? key}) : super(key: key);
@@ -56,7 +57,6 @@ class _UserLocationState extends State<UserLocation> {
                                     fontWeight: FontWeight.w500,
                                     color: Colors.red)),
                             const SizedBox(width: 8),
-                            const SizedBox(width: 8),
                             const Padding(
                               padding: EdgeInsets.only(left: 10),
                               child: Text('Wind',
@@ -109,30 +109,60 @@ class _UserLocationState extends State<UserLocation> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      'Temperature: ${data.main!.temp!.round()} °C',
-                                      style: const TextStyle(
-                                          color: Colors.black, fontSize: 32),
+                                    ListTile(
+                                      leading: const Icon(
+                                        LineIcons.thermometer,
+                                        color: Colors.blue,
+                                      ),
+                                      title: Text(
+                                        'Temperature: ${data.main!.temp!.round()} °C',
+                                        style: const TextStyle(
+                                            color: Colors.black, fontSize: 32),
+                                      ),
                                     ),
-                                    Text(
-                                      "Humidity  ${data.main!.humidity}%",
-                                      style: const TextStyle(
-                                          color: Colors.black, fontSize: 32),
+                                    ListTile(
+                                      leading: const Icon(
+                                        LineIcons.draftingCompass,
+                                        color: Colors.blue,
+                                      ),
+                                      title: Text(
+                                        'Humidity: ${data.main!.humidity}%',
+                                        style: const TextStyle(
+                                            color: Colors.black, fontSize: 32),
+                                      ),
                                     ),
-                                    Text(
-                                      'Visibility: ${data.visibility}km',
-                                      style: const TextStyle(
-                                          color: Colors.black, fontSize: 32),
+                                    ListTile(
+                                      leading: const Icon(
+                                        LineIcons.lowVision,
+                                        color: Colors.blue,
+                                      ),
+                                      title: Text(
+                                        'Visibility: ${data.visibility}km',
+                                        style: const TextStyle(
+                                            color: Colors.black, fontSize: 32),
+                                      ),
                                     ),
-                                    Text(
-                                      'Pressure: ${data.main!.pressure}hpa',
-                                      style: const TextStyle(
-                                          color: Colors.black, fontSize: 32),
+                                    ListTile(
+                                      leading: const Icon(
+                                        LineIcons.pushed,
+                                        color: Colors.blue,
+                                      ),
+                                      title: Text(
+                                        'Pressure: ${data.main!.pressure}hpa',
+                                        style: const TextStyle(
+                                            color: Colors.black, fontSize: 32),
+                                      ),
                                     ),
-                                    Text(
-                                      "Clouds  ${data.weather?[0].main}",
-                                      style: const TextStyle(
-                                          color: Colors.black, fontSize: 32),
+                                    ListTile(
+                                      leading: const Icon(
+                                        LineIcons.cloud,
+                                        color: Colors.blue,
+                                      ),
+                                      title: Text(
+                                        "Clouds  ${data.weather?[0].main}",
+                                        style: const TextStyle(
+                                            color: Colors.black, fontSize: 32),
+                                      ),
                                     ),
                                   ],
                                 ),
