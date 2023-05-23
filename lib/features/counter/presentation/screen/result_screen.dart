@@ -42,6 +42,8 @@ class _ResultScreenState extends State<ResultScreen> {
         DateTime.fromMillisecondsSinceEpoch(sunsetTime! * 1000);
     String tempSunset = DateFormat('h:mm a').format(sunsetDateTime);
     finasunsetTime = tempSunset;
+
+    ///Icon code
   }
 
   @override
@@ -58,136 +60,145 @@ class _ResultScreenState extends State<ResultScreen> {
             ),
           ),
           child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text("${widget.weatherCardModel.name}",
-                    style: const TextStyle(
-                        fontSize: 50,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.lightGreenAccent)),
-                const SizedBox(width: 10),
-                Text("Temp ${widget.weatherCardModel.main?.temp!.round()}°C",
-                    style: const TextStyle(
-                        fontSize: 35,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.red)),
-                const SizedBox(width: 8),
-                const Padding(
-                  padding: EdgeInsets.only(left: 10),
-                  child: Text('Wind',
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black)),
-                ),
-                Card(
-                  color: Colors.deepPurple,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(11)),
-                  child: SizedBox(
-                    width: double.maxFinite,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ///   Text('Updated Time:$finalDateTime'),
-                        ListTile(
-                          leading: const Icon(
-                            Icons.air,
-                            color: Colors.blue,
-                          ),
-                          title: Text(
-                              '${widget.weatherCardModel.wind!.speed} Speed Km/h'),
-                        )
-                      ],
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text("${widget.weatherCardModel.name}",
+                      style: const TextStyle(
+                          fontSize: 50,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.lightGreenAccent)),
+                  const SizedBox(width: 10),
+                  Image.network(
+                    'http://openweathermap.org/img/w/${widget.weatherCardModel.weather![0].icon}.png',
+                    width: 130,
+                    height: 130,
+                    fit: BoxFit.fill,
+                  ),
+                  Text(
+                    " ${widget.weatherCardModel.weather?[0].main}",
+                    style: const TextStyle(fontSize: 20, color: Colors.black),
+                  ),
+                  Text("Temp ${widget.weatherCardModel.main?.temp!.round()}°C",
+                      style: const TextStyle(
+                          fontSize: 35,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.red)),
+                  const SizedBox(width: 10),
+                  Text(
+                    'Updated Time:$finalDateTime',
+                    style: const TextStyle(color: Colors.black),
+                  ),
+                  Text(
+                    'Sunrise :$finalSunriseTime',
+                    style: const TextStyle(color: Colors.black),
+                  ),
+                  Text(
+                    'Sunset :$finasunsetTime',
+                    style: const TextStyle(color: Colors.black),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Text('Wind',
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black)),
+                  ),
+                  Card(
+                    color: Colors.deepPurple,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(11)),
+                    child: SizedBox(
+                      width: double.maxFinite,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ///   Text('Updated Time:$finalDateTime'),
+                          ListTile(
+                            leading: const Icon(
+                              Icons.air,
+                              color: Colors.blue,
+                            ),
+                            title: Text(
+                                '${widget.weatherCardModel.wind!.speed} Speed Km/h'),
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                Text('Updated Time:$finalDateTime'),
-                Text('Sunrise :$finalSunriseTime'),
-                Text('Sunset :$finasunsetTime'),
-                const SizedBox(height: 15),
-                const Padding(
-                  padding: EdgeInsets.only(left: 10),
-                  child: Text('Weather',
-                      style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.black)),
-                ),
-                Card(
-                  color: Colors.amber,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(11)),
-                  child: SizedBox(
-                    width: double.maxFinite,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ListTile(
-                          leading: const Icon(
-                            LineIcons.thermometer,
-                            color: Colors.blue,
+                  const Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Text('Weather',
+                        style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.black)),
+                  ),
+                  Card(
+                    color: Colors.amber,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(11)),
+                    child: SizedBox(
+                      width: double.maxFinite,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ListTile(
+                            leading: const Icon(
+                              LineIcons.draftingCompass,
+                              color: Colors.blue,
+                            ),
+                            title: Text(
+                              'Humidity: ${widget.weatherCardModel.main!.humidity}%',
+                              style: const TextStyle(
+                                  color: Colors.black, fontSize: 35),
+                            ),
                           ),
-                          title: Text(
-                            'Temperature: ${widget.weatherCardModel.main!.temp!.round()} °C',
-                            style: const TextStyle(
-                                color: Colors.black, fontSize: 32),
+                          ListTile(
+                            leading: const Icon(
+                              LineIcons.lowVision,
+                              color: Colors.blue,
+                            ),
+                            title: Text(
+                              'Visibility: ${widget.weatherCardModel.visibility}km',
+                              style: const TextStyle(
+                                  color: Colors.black, fontSize: 35),
+                            ),
                           ),
-                        ),
-                        ListTile(
-                          leading: const Icon(
-                            LineIcons.draftingCompass,
-                            color: Colors.blue,
+                          ListTile(
+                            leading: const Icon(
+                              LineIcons.pushed,
+                              color: Colors.blue,
+                            ),
+                            title: Text(
+                              'Pressure: ${widget.weatherCardModel.main!.pressure}hpa',
+                              style: const TextStyle(
+                                  color: Colors.black, fontSize: 35),
+                            ),
                           ),
-                          title: Text(
-                            'Humidity: ${widget.weatherCardModel.main!.humidity}%',
-                            style: const TextStyle(
-                                color: Colors.black, fontSize: 32),
+                          ListTile(
+                            leading: const Icon(
+                              LineIcons.cloud,
+                              color: Colors.blue,
+                            ),
+                            title: Text(
+                              "Clouds : ${widget.weatherCardModel.weather?[0].main}",
+                              style: const TextStyle(
+                                  color: Colors.black, fontSize: 35),
+                            ),
                           ),
-                        ),
-                        ListTile(
-                          leading: const Icon(
-                            LineIcons.lowVision,
-                            color: Colors.blue,
-                          ),
-                          title: Text(
-                            'Visibility: ${widget.weatherCardModel.visibility}km',
-                            style: const TextStyle(
-                                color: Colors.black, fontSize: 32),
-                          ),
-                        ),
-                        ListTile(
-                          leading: const Icon(
-                            LineIcons.pushed,
-                            color: Colors.blue,
-                          ),
-                          title: Text(
-                            'Pressure: ${widget.weatherCardModel.main!.pressure}hpa',
-                            style: const TextStyle(
-                                color: Colors.black, fontSize: 32),
-                          ),
-                        ),
-                        ListTile(
-                          leading: const Icon(
-                            LineIcons.cloud,
-                            color: Colors.blue,
-                          ),
-                          title: Text(
-                            "Clouds  ${widget.weatherCardModel.weather?[0].main}",
-                            style: const TextStyle(
-                                color: Colors.black, fontSize: 32),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
