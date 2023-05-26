@@ -12,6 +12,6 @@ class Assets {
   static const String imagesSaptari = 'assets/images/saptari.jpg';
   static const String imagesSun = 'assets/images/sun.png';
   static const String imagesSunny = 'assets/images/sunny.png';
-  static const String imagesUmbrella = 'assets/images/umbrella.png';
+  static const String imagesWeather = 'assets/images/weather.png';
   static const String imagesWhiteSnow = 'assets/images/white_snow.png';
 }

@@ -1,8 +1,10 @@
+import 'package:auto_route/annotations.dart';
 import 'package:broadway_weather_project/features/counter/data/models/weather_card_model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:line_icons/line_icons.dart';
 
+@RoutePage()
 class ResultScreen extends StatefulWidget {
   const ResultScreen({Key? key, required this.weatherCardModel})
       : super(key: key);
@@ -87,6 +89,12 @@ class _ResultScreenState extends State<ResultScreen> {
                           fontWeight: FontWeight.w500,
                           color: Colors.red)),
                   const SizedBox(width: 10),
+                  Text(
+                      'Feels Like:${widget.weatherCardModel.main!.tempMax ?? "N/A"}°C ',
+                      style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.limeAccent)),
                   Text(
                     'Updated Time:$finalDateTime',
                     style: const TextStyle(color: Colors.black),

@@ -1,4 +1,3 @@
-// import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';
 // import 'package:weather_icons/weather_icons.dart';
 //
@@ -11,6 +10,7 @@
 //
 // class _WeatherHomeScreenState extends State<WeatherHomeScreen> {
 //   TextEditingController searchController = TextEditingController();
+//
 //   @override
 //   Widget build(BuildContext context) {
 //     var name = ["Lahan", "Biratnagar", "Rajbiraj"];

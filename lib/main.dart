@@ -2,9 +2,10 @@ import 'package:broadway_weather_project/core/di/injetctable.dart';
 import 'package:broadway_weather_project/features/counter/presentation/bloc/weather_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'core/auto_route/router.dart';
 import 'features/counter/presentation/bloc/location/location_cubit.dart';
-import 'features/counter/presentation/screen/weather_home_screen.dart';
 
 void main() async {
   ///Configure DI
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final AppRouter _appRouter = getIt<AppRouter>();
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -29,14 +31,24 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<LocationCubit>(),
         ),
+        // BlocProvider(
+        //   create: (context) => getIt<SplashCubit>(),
+        // ),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Weather app',
-        theme: ThemeData(
-          primaryColor: Colors.red,
-        ),
-        home: const WeatherHomeScreen(),
+      child: ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
+          return MaterialApp.router(
+            routerConfig: _appRouter.config(),
+            title: 'Weather app',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              primaryColor: Colors.red,
+            ),
+          );
+        },
       ),
     );
   }

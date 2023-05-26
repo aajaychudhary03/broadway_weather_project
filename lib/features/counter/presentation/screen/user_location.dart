@@ -1,18 +1,19 @@
+import 'package:auto_route/annotations.dart';
 import 'package:broadway_weather_project/features/counter/presentation/bloc/location/location_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:line_icons/line_icons.dart';
 
-class UserLocation extends StatefulWidget {
-  const UserLocation({Key? key}) : super(key: key);
+@RoutePage()
+class UserLocationScreen extends StatefulWidget {
+  const UserLocationScreen({Key? key}) : super(key: key);
 
   @override
-  State<UserLocation> createState() => _UserLocationState();
+  State<UserLocationScreen> createState() => _UserLocationScreenState();
 }
 
-class _UserLocationState extends State<UserLocation> {
+class _UserLocationScreenState extends State<UserLocationScreen> {
   late LocationCubit locationCubit;
-
 
   @override
   void initState() {
@@ -33,7 +34,6 @@ class _UserLocationState extends State<UserLocation> {
               fit: BoxFit.cover,
             ),
           ),
-
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -55,8 +55,7 @@ class _UserLocationState extends State<UserLocation> {
                                       color: Colors.blue)),
                               const SizedBox(width: 10),
                               Image.network(
-                                'http://openweathermap.org/img/w/${data
-                                    .weather![0].icon}.png',
+                                'http://openweathermap.org/img/w/${data.weather![0].icon}.png',
                                 width: 125,
                                 height: 125,
                                 fit: BoxFit.fill,
@@ -71,6 +70,12 @@ class _UserLocationState extends State<UserLocation> {
                                       fontSize: 30,
                                       fontWeight: FontWeight.w500,
                                       color: Colors.red)),
+                              Text(
+                                  'Feels Like:${data.main!.tempMax ?? "N/A"}°C ',
+                                  style: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.blue)),
                               const SizedBox(width: 8),
                               const Padding(
                                 padding: EdgeInsets.only(left: 10),
@@ -90,7 +95,7 @@ class _UserLocationState extends State<UserLocation> {
                                   width: double.maxFinite,
                                   child: Column(
                                     crossAxisAlignment:
-                                    CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                     children: [
                                       // Text('Updated Time:$finalDateTime'),
                                       // Text('Sunrise :$finalSunriseTime'),
@@ -124,7 +129,7 @@ class _UserLocationState extends State<UserLocation> {
                                   width: double.maxFinite,
                                   child: Column(
                                     crossAxisAlignment:
-                                    CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                     children: [
                                       ListTile(
                                         leading: const Icon(
